@@ -1,0 +1,48 @@
+{% extends 'faculty/faculty_index.html'%}
+{% block body %}
+<form action="/edit_dameg_report_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+
+     <tr>
+            <th>euipment<input type="hidden" name="dm_id" value="{{ report['d_id'] }}"></th>
+         <td><select name="select" class="form-control"  >
+         <option value="{{ report['eqp_id'] }}">{{ report['eqp_name'] }}</option>
+             {% for i in eqp %}
+                 <option value="{{ i['eqp_id'] }}">{{ i['eqp_name'] }}</option>
+                {% endfor %}
+         </select>
+
+         </td>
+        </tr>
+      <tr>
+            <th>student</th>
+         <td><select name="select1" class="form-control"  >
+         <option value="{{ report['login_id'] }}">{{ report['name'] }}</option>
+             {% for i in stnd %}
+                 <option value="{{ i['login_id'] }}">{{ i['name'] }}</option>
+                {% endfor %}
+         </select>
+
+         </td>
+        </tr>
+      <tr>
+            <th>Lab</th>
+         <td><select name="select2" class="form-control"  >
+         <option value="{{ report['lab_id'] }}">{{ report['lab_name'] }}</option>
+             {% for i in lab %}
+                 <option value="{{ i['lab_id'] }}">{{ i['lab_name'] }}</option>
+                {% endfor %}
+         </select>
+
+         </td>
+        </tr>
+      <tr>
+         <td>Damege</td>
+         <td><textarea name="texarea" class="form-control" >{{ report['damege'] }}</textarea></td>
+     </tr>
+     <tr>
+             <td><input type="submit" name="submit" value="Edit" class="btn btn-primary"></td>
+         </tr>
+     </table>
+</form>
+{% endblock %}

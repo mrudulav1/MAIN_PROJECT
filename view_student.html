@@ -1,47 +1,44 @@
-{% extends 'admin/index.html'%}
+{% extends 'faculty/faculty_index.html'%}
 {% block body %}
-<form method="post" action="/view_student_post" enctype="multipart/form-data">
-    <table class="pull-right">
-        <tr>
-            <td><input type="text" name="search" class="form-control" required placeholder="Search...">
-            </td><td>  <input type="submit" name="s1" value="Search" class="btn btn-primary"></td>
-        </tr>
-    </table>
+<form action="/fac_view_student_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+         <tr>
+             <td>name</td>
+             <td><input type="text" name="textfield" class="form-control" required></td>
+             <td><input type="submit" name="submit" value="search" class="btn btn-primary"></td>
+         </tr>
+     </table>
+     <table class="table table-borderless table-striped">
+         <tr>
+             <th>Sl no</th>
+             <th>student name</th>
+                <th> contacts</th>
+              <th> DOB</th>
+             <th> Gender</th>
+             <th>Address</th>
+             <th>Year</th>
+             <th></th>
 
-    <table class="table table-borderless table-hover">
-        <tr>
-            <th>S.No</th>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>DOB</th>
-            <th>Address</th>
-            <th>Contact</th>
-            <th>year</th>
-<th>Status</th>
-            <th colspan="2"></th>
-        </tr>
-        {% for i in data %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td><img src="{{ i['photo'] }}" width="100px" height="100px">
-                <br>{{ i['name'] }}</td>
-            <td>{{ i['gender'] }}</td>
-            <td>{{ i['dob'] }}</td>
-              <td>{{ i['place']}}<br>
-                {{ i['city']}}<br>
-                {{ i['pin']}}
-            </td>
-            <td>{{ i['email'] }}
-                <br>{{ i['phone'] }}</td>
-            <td>{{ i['year']}}</td>
-   <td>{{ i['status'] }}</td>
 
-            <td><a href="/edit_student/{{ i['login_id'] }}" class="btn btn-primary">Edit</a><br><br>
-            <a href="/delete_student/{{ i['login_id'] }}" class="btn btn-danger" onclick="return confirm('Do you want to delete this?')">Delete</a></td>
+         </tr>
+         {% for i in stnd %}
+         <tr>
+                <td>{{ loop.index }}</td>
+             <td>{{ i['name'] }}<br><img src="{{ i['photo'] }}"></td>
+                <td>{{ i['email'] }}<br>
+                    {{ i['phone'] }}
+                </td>
+               <td>{{ i['dob'] }}</td>
+              <td>{{ i['gender'] }}</td>
+             <td>{{ i['place'] }}<br>
+                 {{ i['city']}}<br>
+                 {{ i['pin']}}
 
-        </tr>
-        {% endfor %}
-    </table>
+             </td>
+             <td>{{ i['year'] }}</td>
+         <td><a href="" class="btn btn-primary">Attendence</a> </td>
+         </tr>
+         {% endfor %}
+     </table>
 </form>
-
 {% endblock %}

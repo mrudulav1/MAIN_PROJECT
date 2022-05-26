@@ -1,0 +1,36 @@
+{% extends 'faculty/faculty_index.html'%}
+{% block body %}
+<form action="/edit_stock_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+        <tr>
+            <th>stock<input type="hidden" name="s_id" value="{{ stock['stock_id'] }}"></th>
+            <td><input type="text" name="f1" value="{{ stock['stock'] }}" class="form-control" required></td>
+        </tr>
+     <tr>
+            <th>euipment</th>
+         <td><select name="select" class="form-control" required >
+         <option value="{{ stock['eqp_id'] }}">{{ stock['eqp_name'] }}</option>
+             {% for i in eqp %}
+                 <option value="{{ i['eqp_id'] }}" {% if i[eqp_id]==stock[eqp_id] %} selected {% endif %}>{{ i['eqp_name'] }}</option>
+                {% endfor %}
+         </select>
+
+         </td>
+        </tr>
+      <tr>
+            <th>Lab</th>
+         <td><select name="select1" class="form-control" required >
+             {% for i in lab %}
+
+                 <option value="{{ i['lab_id'] }}"  {% if i[lab_id]==stock[lab_id] %} selected {% endif %}>{{ i['lab_name'] }}</option>
+                {% endfor %}
+         </select>
+
+         </td>
+        </tr>
+         <tr>
+             <td><input type="submit" name="submit" value="Add" class="btn btn-primary"></td>
+         </tr>
+     </table>
+</form>
+{% endblock %}

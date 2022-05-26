@@ -1,0 +1,38 @@
+{% extends 'faculty/faculty_index.html'%}
+{% block body %}
+<form action="/view_dameg_report_search_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+         <tr>
+             <td>from date</td>
+             <td><input type="date" name="textfield" class="form-control" required></td>
+             <td>to date</td>
+             <td><input type="date" name="textfield1" class="form-control" required></td>
+             <td><input type="submit" name="submit" value="search" class="btn btn-primary"></td>
+         </tr>
+     </table>
+     <table class="table table-borderless table-striped">
+         <tr>
+             <th>Sl no</th>
+             <th>equipment name</th>
+             <th> student</th>
+             <th>lab name</th>
+             <th>Damege</th>
+             <th> Date</th>
+             <th></th>
+         </tr>
+         {% for i in damege %}
+         <tr>
+                <td>{{ loop.index }}</td>
+             <td>{{ i['eqp_name'] }}</td>
+                <td>{{ i['name'] }}<br>
+                </td>
+             <td>{{ i['lab_name'] }}</td>
+             <td>{{ i['damege'] }}</td>
+              <td>{{ i['date'] }}</td>
+         <td><a href="/delete_damege_report/{{ i['d_id'] }}" class="btn btn-outline-danger">Delete</a> <br><br>
+         <a href="/edit_damege_report/{{ i['d_id'] }}" class="btn btn-outline-info">Edit</a> </td>
+         </tr>
+         {% endfor %}
+     </table>
+</form>
+{% endblock %}

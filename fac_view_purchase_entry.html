@@ -1,0 +1,38 @@
+{% extends 'faculty/faculty_index.html'%}
+{% block body %}
+<form action="/fac_view_purchase_entry_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+         <tr>
+             <td>from date</td>
+             <td><input type="date" name="textfield" class="form-control" required></td>
+              <td>to date</td>
+             <td><input type="date" name="textfield1" class="form-control" required></td>
+             <td><input type="submit" name="submit" value="search" class="btn btn-primary"></td>
+         </tr>
+     </table>
+     <table class="table table-borderless table-striped">
+         <tr>
+             <th>Sl no</th>
+             <th>equipment name</th>
+             <th> lab name</th>
+              <th> stock</th>
+             <th> Amount</th>
+               <th>date</th>
+             <td></td>
+         </tr>
+         {% for i in purchase %}
+         <tr>
+                <td>{{ loop.index }}</td>
+             <td>{{ i['eqp_name'] }}</td>
+                <td>{{ i['lab_name'] }}</td>
+               <td>{{ i['stock'] }}</td>
+             <td>{{ i['amount'] }}</td>
+             <td>{{ i['date'] }}</td>
+<td><a href="/delete_purchase_entry/{{ i['p_id']}}" class="btn btn-outline-info">Delete</a> <br><br>
+    <a href="/edit_purchase_entry/{{ i['p_id']}}" class="btn btn-outline-info">Edit</a>
+</td>
+         </tr>
+         {% endfor %}
+     </table>
+</form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'faculty/faculty_index.html'%}
+{% block body %}
+<form action="/edit_purchase_entry_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+        <tr>
+            <td>equipment<input type="hidden" name="pid" value="{{ purchase['p_id']}}"></td>
+            <td><select name="select" class="form-control" required>
+                <option value="{{ purchase['eqp_id']}}" selected>{{ purchase['eqp_name']}}</option>
+                {% for i in eqp %}
+                <option value="{{ i['eqp_id']}}">{{ i['eqp_name']}}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+         <tr>
+             <td>Lab</td>
+             <td><select name="select1" class="form-control" required>
+                 <option value="{{ purchase['lab_id']}}" selected>{{ purchase['lab_name']}}</option>
+                 {% for i in lab %}
+                <option value="{{ i['lab_id']}}">{{ i['lab_name']}}</option>
+                {% endfor %}
+             </select></td>
+         </tr>
+         <tr>
+             <td>Amount</td>
+             <td><input type="text" name="amount" value="{{ purchase['amount']}}" class="form-control" required></td>
+         </tr>
+         <tr>
+             <td>stock</td>
+             <td><input type="text" name="stock" value="{{ purchase['stock']}}" class="form-control" required></td>
+         </tr>
+         <tr>
+             <td><input type="submit" name="submit" value="Add" class="btn btn-primary"></td>
+         </tr>
+
+     </table>
+</form>
+{% endblock %}

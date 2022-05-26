@@ -1,0 +1,51 @@
+{% extends 'faculty/faculty_index.html'%}
+{% block body %}
+<form action="/edit_fac_profile_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+         <tr>
+             <td><img src="{{ fac['staff_photo']}}"></td>
+         </tr>
+        <tr>
+            <th>name<input type="hidden" name="fac_id" value="{{ fac['staff_lid']}}"></th>
+            <td><input type="text" name="f1" value="{{ fac['staff_name']}}" class="form-control" required></td>
+        </tr>
+     <tr>
+            <th>DOB</th>
+            <td><input type="date" name="n7"  value="{{ fac['staff_dob']}}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input type="text" name="n1" value="{{ fac['staff_email']}}" class="form-control" required></td>
+        </tr>
+         <tr>
+            <th>phone</th>
+            <td><input type="text" name="n2" value="{{ fac['staff_phone']}}" class="form-control" required></td>
+        </tr>
+     <tr>
+            <th>Qualification</th>
+            <td><input type="text" name="n8" value="{{ fac['staff_qualific']}}" class="form-control" required></td>
+        </tr>
+         <tr>
+            <th>gender</th>
+             {% if fac['staff_gender']=='male' %}
+            <td><input type="radio" name="n4" value="male" checked> male<br>
+                <input type="radio" name="n4" value="female" >female
+            </td>
+                 {% else %}
+            <td><input type="radio" name="n4" value="male" > male<br>
+                <input type="radio" name="n4" value="female" checked>female
+            </td>
+             {% endif %}
+        </tr>
+         <tr>
+            <th>image</th>
+            <td><input type="file" name="n5" class="form-control" ></td>
+        </tr>
+
+           <tr>
+            <td><input type="submit" name="s1" value="Edit" class="btn btn-primary"></td>
+        </tr>
+     </table>
+</form>
+
+{% endblock %}
