@@ -1,0 +1,34 @@
+{% extends 'admin/index.html'%}
+{% block body %}
+<form method="post" action="/hod_alloc_post">
+    <table class="table table-borderless">
+        <tr>
+            <th>Lab</th>
+            <td>
+                <select name="s2" class="form-control" required>
+                    <option></option>
+                    {% for i in data1 %}
+                        <option value="{{ i['lab_id'] }}">{{ i['lab_name'] }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>
+                <select name="s1" class="form-control" required>
+                    <option></option>
+                    {% for i in data %}
+                    <option value="{{ i['staff_lid'] }}">{{ i['staff_name'] }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" name="s1" class="btn btn-outline-success"></td>
+        </tr>
+    </table>
+</form>
+
+
+{% endblock %}

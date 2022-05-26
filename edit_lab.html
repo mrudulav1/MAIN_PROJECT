@@ -1,0 +1,18 @@
+{% extends 'admin/index.html'%}
+{% block body %}
+<form action="/edit_lab_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+        <tr>
+            <th>Lab name<input type="hidden" name="l_id" value="{{ data['lab_id'] }}"></th>
+            <td><input type="text" name="f1" value="{{ data['lab_name'] }}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>room_no</th>
+            <td><input type="text" name="n1" value="{{ data['room_no'] }}" class="form-control" required></td>
+        </tr>
+           <tr>
+            <td colspan="2" align="center"><input type="submit" name="s1" value="UPDATE" class="btn btn-outline-success"></td>
+        </tr>
+     </table>
+</form>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'admin/index.html'%}
+{% block body %}
+<form action="/add_lab_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+        <tr>
+            <th>Lab name</th>
+            <td><input type="text" name="f1" id="f1" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>room_no</th>
+            <td><input type="text" name="n1" class="form-control" required></td>
+        </tr>
+           <tr>
+            <td colspan="2" align="center"><input type="submit" name="s1" value="SAVE" class="btn btn-outline-success"></td>
+        </tr>
+     </table>
+</form>
+
+
+
+<script src="/static/jquery.js"></script>
+    <script>
+    $(document).ready(function () {
+
+        $("#f1").change(function () {
+            ty=$(this).val();
+            $.ajax({
+                url:'/ajax_lab_post',
+                type:'POST',
+                data:{type:ty},
+                dataType:'json',
+                success:function (res) {
+                  if(res.status=="ok")
+                  {
+
+                      alert("New Lab!")
+                  }
+                  else
+                  {
+                      document.getElementById("f1").value="";
+                      alert("already existing!")
+                  }
+
+                },
+                error:function (res) {
+
+                }
+
+            });
+
+        });
+
+    });
+    </script>
+{% endblock %}

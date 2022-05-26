@@ -1,0 +1,59 @@
+{% extends 'admin/index.html'%}
+{% block body %}
+<form action="/add_student_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+        <tr>
+            <th>Photo</th>
+            <td><input type="file" name="f1" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td><input type="text" name="n1" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td><input type="radio" name="r1" value="Male">Male
+                <input type="radio" name="r1" value="Female">Female
+                <input type="radio" name="r1" value="Other">Other</td>
+        </tr>
+        <tr>
+            <th>DOB</th>
+            <td><input type="date" name="d1" class="form-control" required></td>
+        </tr>
+          <tr>
+             <th>place</th>
+             <td><input type="text" name="place" class="form-control" required></td>
+         </tr>
+         <tr>
+             <th>city</th>
+             <td><input type="text" name="city" class="form-control" required></td>
+         </tr>
+         <tr>
+             <th>pin</th>
+             <td><input type="text" name="pin" class="form-control" required></td>
+         </tr>
+         <tr>
+            <th>Email</th>
+            <td><input type="email" name="e1" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td><input type="number" name="p1" class="form-control" required maxlength="10" pattern="[6789]{1}[0-9]{9}"></td>
+        </tr>
+
+
+
+         <tr>
+             <th>Batch</th>
+             <td><select name="select3" class="form-control" required>
+                 <option> 1 year</option>
+                  <option> 2 year</option>
+             </select></td>
+         </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" name="s1" value="SAVE" class="btn btn-outline-success"></td>
+        </tr>
+
+    </table>
+</form>
+{% endblock %}

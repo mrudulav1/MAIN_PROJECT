@@ -1,0 +1,54 @@
+{% extends 'admin/index.html'%}
+{% block body %}
+<form action="/add_faculty_post" method="post" enctype="multipart/form-data">
+     <table class="table table-borderless table-striped">
+        <tr>
+            <th>name</th>
+            <td><input type="text" name="f1" class="form-control" required></td>
+        </tr>
+     <tr>
+            <th>Age</th>
+            <td><input type="date" name="n7" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input type="text" name="n1" class="form-control" required></td>
+        </tr>
+         <tr>
+            <th>phone</th>
+            <td><input type="text" name="n2" class="form-control" required></td>
+        </tr>
+     <tr>
+            <th>Department</th>
+            <td><input type="text" name="n8" class="form-control" required></td>
+        </tr>
+         <tr>
+            <th>place</th>
+            <td><input type="text" name="n3" class="form-control" required></td>
+        </tr>
+         <tr>
+            <th>gender</th>
+            <td><input type="radio" name="n4" value="male" > male<br>
+                <input type="radio" name="n4" value="female" >female
+
+            </td>
+        </tr>
+         <tr>
+            <th>image</th>
+            <td><input type="file" name="n5" class="form-control" required></td>
+        </tr>
+          <tr>
+            <th>Lab</th>
+            <td><select  name="n6" class="form-control" required>
+                {% for i in lab %}
+                <option value="{{ i['lab_id'] }}">{{ i['lab_name'] }}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+           <tr>
+            <td><input type="submit" name="s1" value="SAVE"></td>
+        </tr>
+     </table>
+</form>
+
+{% endblock %}
