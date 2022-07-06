@@ -1,0 +1,31 @@
+{% extends 'faculty/faculty_index.html'%}
+{% block body %}
+<body>
+
+<form method="" action="">
+    <table class="table table-borderless table-striped">
+        <tr>
+            <th>S.NO</th>
+            <th>DATE</th>
+            <th>TIME</th>
+            <th>STUDENT</th>
+            <th>STATUS</th>
+            <th></th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i['at_date'] }}</td>
+            <td>{{ i['attendence_time'] }}</td>
+            <td>{{ i['reg_no'] }}<br>{{ i['name'] }}<br>{{ i['class'] }}</td>
+            <td>{{ i['at_status'] }}</td>
+            <td><a href="/delete_attendence/{{ i['student_lid'] }}"onclick="return confirm('Do you want to delete this?')" class="btn btn-outline-danger">DELETE</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+
+
+
+</body>
+{% endblock %}

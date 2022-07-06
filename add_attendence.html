@@ -1,0 +1,41 @@
+{% extends 'faculty/faculty_index.html' %}
+{% block body %}
+<body>
+    <form method="post" action="/mark_attendence_post">
+        <table class="table table-borderless">
+            <!--<tr>-->
+                <!--<th>Class</th>-->
+                <!--<td><input type="text" name="c1" class="form-control" required></td>-->
+
+                <!--<td><input type="submit" name="s1" value="SEARCH"></td>-->
+            <!--</tr>-->
+            <tr>
+                <th>Sl.No</th>
+                <th>PHOTO</th>
+                <th>NAME</th>
+                <!--<th>EMAIL</th>-->
+                <th>CLASS</th>
+                <th>YEAR</th>
+                <th colspan="2">Mark Attendence</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td><img src="{{ i['photo'] }}" width="100px" height="100px"> </td>
+                <td>{{ i['name'] }}</td>
+                <!--<td>{{ i['email'] }}</td>-->
+                <td>{{ i['class'] }}</td>
+                <td>{{ i['year'] }}</td>
+                <td><input type="checkbox" name="a1" value="{{ i['login_id'] }}">Present</td>
+                <!--<td><input type="checkbox" name="a1" value="Absent">Absent</td>-->
+                <td></td>
+            </tr>
+
+            {% endfor %}
+             <tr>
+                <td><input type="submit" name="s1" value="Save" class="btn btn-success"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+{% endblock %}

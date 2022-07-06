@@ -1,35 +1,30 @@
-{% extends 'faculty/faculty_index.html'%}
+{% extends 'hod/hod_index.html' %}
 {% block body %}
-<form action="/view_equipment_post" method="post" enctype="multipart/form-data">
-     <table class="table table-borderless table-striped">
-         <tr>
-             <td>name</td>
-             <td><input type="text" name="textfield" class="form-control" required></td>
-             <td><input type="submit" name="submit" value="search" class="btn btn-primary"></td>
-         </tr>
-     </table>
-     <table class="table table-borderless table-striped">
-         <tr>
-             <th>Sl no</th>
-             <th>equipment name</th>
-             <th> Type</th>
-             <th>Photo</th>
-             <th>Price</th>
-             <th> Date</th>
-             <th></th>
-         </tr>
-         {% for i in eqp %}
-         <tr>
-                <td>{{ loop.index }}</td>
-             <td>{{ i['eqp_name'] }}</td>
-                <td>{{ i['type'] }}</td>
-             <th><img src="{{ i['photo'] }}"></th>
-             <th>{{ i['price'] }}</th>
-              <td>{{ i['date'] }}</td>
-         <td><a href="/delete_equipment/{{ i['eqp_id'] }}" class="btn btn-outline-danger">Delete</a> <br><br>
-         <a href="/edit_equipment/{{ i['eqp_id'] }}" class="btn btn-outline-info">Edit</a> </td>
-         </tr>
-         {% endfor %}
-     </table>
+<body>
+<form method="post" action="">
+    <table class="table table-borderless">
+        <tr>
+            <th>S.NO</th>
+            <th>EQUIPMENT INFO</th>
+            <th>TYPE</th>
+            <th>PHOTO</th>
+            <th>PRICE</th>
+            <th>FACULTY INFO</th>
+{#            <th></th>#}
+        </tr>
+        {% for i in data %}
+            <tr>
+               <td>{{ loop.index }}</td>
+               <td>ID:{{ i['eqip_nid'] }}
+               <br>Name:{{ i['eqp_name'] }}</td>
+               <td>{{ i['type'] }}</td>
+               <td><img src="{{ i['photo'] }}" width="100px" height="100px"></td>
+               <td>{{ i['price'] }}0</td>
+               <td>{{ i['staff_name'] }}</td>
+{#               <td>{{ i[''] }}</td>#}
+            </tr>
+        {% endfor %}
+    </table>
 </form>
+</body>
 {% endblock %}

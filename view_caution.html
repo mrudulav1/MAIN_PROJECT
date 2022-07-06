@@ -1,0 +1,22 @@
+{% extends 'admin/index.html' %}
+{% block body %}
+<body>
+    <table class="table table-borderless table-striped">
+        <tr>
+            <th>S.No</th>
+            <th>AMOUNT</th>
+            <th>BATCH</th>
+            <th colspan="2"></th>
+        </tr>
+        {% for i in data %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ i['amount'] }}</td>
+               <td>{{ i['year_of_batch']}}-{{ i['year_of_batch']+2}}</td>
+                <td><a href="/edit_caution/{{ i['cd_id'] }}/{{i["year_of_batch"]}}" class="btn btn-outline-info">Edit</a></td>
+                <td><a href="/delete_caution/{{ i['cd_id'] }}/{{i["year_of_batch"]}}" class="btn btn-outline-danger">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock %}

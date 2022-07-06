@@ -1,0 +1,54 @@
+{% extends 'hod/hod_index.html'%}
+{% block body %}
+<form action="/hod_view_stock_post" method="post" enctype="multipart/form-data">
+    <h3 align="center">View Stock</h3>
+     <table class="table table-borderless table-striped">
+         <tr>
+             <th>Equipment ID</th>
+             <td><input type="tex" name="textfield" class="form-control" ></td>
+             <td><input type="submit" name="submit" value="SEARCH" class="btn btn-primary"></td>
+         </tr>
+         <tr>
+             <td>Working Status</td>
+                  <td >
+             <select name="s1" class="form-control" required>
+                    <option>working</option>
+                     <option>damaged</option>
+                </select>
+
+         </td>
+             <td><input type="submit" name="submit" value="GO" class="btn btn-primary"></td>
+         </tr>
+     </table>
+     <table class="table table-borderless table-striped">
+         <tr>
+             <th>Sl No</th>
+             <th>Type</th>
+             <th>Equipment Name</th>
+             <th> Stock</th>
+             <th> Date</th>
+             <th>Time</th>
+             <th>Equipment Status</th>
+             <th></th>
+         </tr>
+
+
+
+
+         {% for i in stock %}
+         <tr>
+                <td>{{ loop.index }}</td>
+             <td>{{ i['type'] }}</td>
+             <td>{{ i['eqp_name'] }}</td>
+                <td>{{ i['eq_code'] }}</td>
+              <td>{{ i['st_date'] }}</td>
+             <td>{{ i['time'] }}</td>
+             <td>{{ i['status'] }}</td>
+
+{#         <td><a href="/delete_stock/{{ i['stock_id'] }}" class="btn btn-outline-danger">Delete</a> <br><br>#}
+{#         <a href="/edit_stock/{{ i['stock_id'] }}" class="btn btn-outline-info">Edit</a> </td>#}
+         </tr>
+         {% endfor %}
+     </table>
+</form>
+{% endblock %}

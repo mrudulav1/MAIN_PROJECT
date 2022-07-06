@@ -1,0 +1,29 @@
+{% extends 'admin/index.html' %}
+{% block body %}
+<body>
+
+   <form method="post" action="/edit_caution_post">
+        <table class="table table-borderless table-striped">
+
+
+        <tr>
+             <th>Batch</th>
+            <td>{{ data['year_of_batch']}}-{{ data['year_of_batch']+2 }}</td>
+{#                 <select name="select4" class="form-control" required>#}
+{#                 {%for i in range(2020,2036) %}#}
+{#                 <option value="{{ i }}">{{ i }}-{{i+2}}</option>#}
+{#                 {% endfor %}#}
+{#             </select></td>#}
+        </tr>
+        <tr>
+            <th>Amount<input type="hidden" name="h1" value="{{ data['cd_id'] }}"></th>
+            <td><input type="text" name="amnt" class="form-control" required value="{{ data['amount'] }}"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="s1" value="UPDATE" class="btn btn-outline-success"></td>
+        </tr>
+    </table>
+   </form>
+
+</body>
+{% endblock %}

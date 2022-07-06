@@ -1,0 +1,73 @@
+{% extends 'admin/index.html' %}
+{% block body %}
+<body>
+   <form method="post" action="/add_caution_post">
+        <table class="table table-borderless table-striped">
+         <tr>
+             <th>Batch</th>
+             <td><select name="select4" class="form-control" required id="rm">
+                 {%for i in range(2020,2036) %}
+                 <option value="{{ i }}">{{ i }}-{{i+2}}</option>
+                 {% endfor %}
+             </select>
+
+             <br>
+             <label id="labb" style="color: red"> Already Existing</label></td>
+         </tr>
+        <tr>
+            <th>Amount</th>
+            <td><input type="text" name="amnt" class="form-control" required ></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="s1" value="Save" class="btn btn-outline-success"></td>
+        </tr>
+    </table>
+   </form>
+
+
+<script src="/static/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+                 $("#labb").hide();
+            $("#rm").change(function () {
+                alert('hi');
+                lab = $("#rm").val();
+                $.ajax({
+                    url: '/caution_check',
+                    type: 'post',
+                    data: {lab: lab},
+                    success: function (res) {
+                      var  val = res['status'];
+                        alert(val);
+                        if (val == 'ok') {
+
+                                    $("#labb").show();
+                                          $("#s1").hide();
+
+
+
+//                             $("#labb").val("Already existing");
+//                            $("#labb").css("color", "red");
+//                            $("#labb").empty();
+
+
+                        }
+                        else {
+//                            $(':input[type="submit"]').prop('disabled', false);
+                            $("#labb").hide();
+                             $("#s1").show();
+
+                        }
+                        return true;
+                    },
+                    error: function (res) {
+                        return false;
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+{% endblock %}
