@@ -1,44 +1,37 @@
-{% extends 'faculty/faculty_index.html'%}
+{% extends 'hod/hod_index.html' %}
 {% block body %}
-<form action="/fac_view_student_post" method="post" enctype="multipart/form-data">
-     <table class="table table-borderless table-striped">
+<body>
+<form method="post" action="">
+    <table class="table table-borderless">
          <tr>
-             <td>name</td>
-             <td><input type="text" name="textfield" class="form-control" required></td>
-             <td><input type="submit" name="submit" value="search" class="btn btn-primary"></td>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Class</th>
+            <th>Batch</th>
+            <th>Status</th>
          </tr>
-     </table>
-     <table class="table table-borderless table-striped">
+        {% for i in data %}
          <tr>
-             <th>Sl no</th>
-             <th>student name</th>
-                <th> contacts</th>
-              <th> DOB</th>
-             <th> Gender</th>
-             <th>Address</th>
-             <th>Year</th>
-             <th></th>
-
-
+            <td>{{ loop.index }}</td>
+            <td><img src="{{ i['photo'] }}" width="100px" height="100px">
+                <br>{{ i['name'] }}<br>{{ i['reg_no'] }}</td>
+            <td>{{ i['gender'] }}</td>
+            <td>{{ i['do'] }}</td>
+            <td>{{ i['place'] }}<br>
+                {{ i['city'] }}<br>
+                {{ i['pin'] }}</td>
+            <td>{{ i['email'] }}
+                <br>{{ i['phone'] }}</td>
+            <td>{{ i['class'] }}</td>
+            <td>{{ i['year']}}-{{ i['year']+2}}</td>
+            <td>{{ i['status'] }}</td>
          </tr>
-         {% for i in stnd %}
-         <tr>
-                <td>{{ loop.index }}</td>
-             <td>{{ i['name'] }}<br><img src="{{ i['photo'] }}"></td>
-                <td>{{ i['email'] }}<br>
-                    {{ i['phone'] }}
-                </td>
-               <td>{{ i['dob'] }}</td>
-              <td>{{ i['gender'] }}</td>
-             <td>{{ i['place'] }}<br>
-                 {{ i['city']}}<br>
-                 {{ i['pin']}}
-
-             </td>
-             <td>{{ i['year'] }}</td>
-         <td><a href="" class="btn btn-primary">Attendence</a> </td>
-         </tr>
-         {% endfor %}
-     </table>
+        {% endfor %}
+    </table>
 </form>
+</body>
 {% endblock %}

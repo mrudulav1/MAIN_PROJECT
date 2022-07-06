@@ -1,0 +1,29 @@
+{% extends 'hod/hod_index.html' %}
+{% block body %}
+<body>
+    <form method="post" action="">
+        <table class="table table-borderless table-striped">
+         <tr>
+             <th>Sl No</th>
+             <th>Equipment Name</th>
+             <th>Lab Name</th>
+             <th>Stock</th>
+             <th>Amount</th>
+             <th>Date</th>
+             <th>Time</th>
+         </tr>
+         {% for i in purchase %}
+         <tr>
+             <td>{{ loop.index }}</td>
+             <td>{{ i['eqp_name'] }}</td>
+             <td>{{ i['lab_name'] }}</td>
+             <td>{{ i['stock'] }}</td>
+             <td>{{ i['amount'] }}</td>
+             <td>{{ i['date'] }}</td>
+             <td>{{ i['time'] }}</td>
+         </tr>
+         {% endfor %}
+     </table>
+    </form>
+</body>
+{% endblock %}
