@@ -1,0 +1,36 @@
+{% extends 'hod/hod_index.html' %}
+{% block body %}
+<body>
+  <table class="table table-borderless">
+        <tr>
+            <th>S.NO</th>
+            <th>DATE</th>
+            <th>FACULTY</th>
+
+
+            <th>EQUIPMENT</th>
+            <th>QUANTITY</th>
+            <th>DESCRIPTION</th>
+{#            <th>STATUS</th>#}
+            <th></th>
+        </tr>
+        {% for i in data %}
+         <tr>
+            <td>{{ loop.index }}</td>
+             <td>{{ i['DO'] }}</td>
+             <td>{{ i['staff_name'] }}<br>{{ i['position'] }}</td>
+             <td><img src="{{ i['photo'] }}" width="100px" height="100px"><br>{{ i['eqip_nid'] }}
+                <br>{{ i['eqp_name'] }}</td>
+            <td>{{ i['quantity'] }}</td>
+            <td>{{ i['description'] }}</td>
+{#            <td>{{ i['status'] }}</td>#}
+         {% if i['hod_status']=='pending' %}
+         <td><a href="/forward_req/{{ i['eq_req_id'] }}" class="btn btn-outline-info">Forward</a> </td>
+         {% else %}
+         <td>{{ i['hod_status'] }}</td>
+            {% endif %}
+         </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock %}

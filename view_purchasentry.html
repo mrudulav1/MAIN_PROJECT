@@ -2,6 +2,7 @@
 {% block body %}
 <body>
     <form method="post" action="">
+        <h3 align="center">View Purchase Entry</h3>
         <table class="table table-borderless table-striped">
          <tr>
              <th>Sl No</th>
@@ -19,7 +20,7 @@
              <td>{{ i['lab_name'] }}</td>
              <td>{{ i['stock'] }}</td>
              <td>{{ i['amount'] }}</td>
-             <td>{{ i['date'] }}</td>
+             <td>{{ i['do'] }}</td>
              <td>{{ i['time'] }}</td>
          </tr>
          {% endfor %}
